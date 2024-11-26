@@ -86,7 +86,10 @@ download_core_files() {
 setperms() {
     #chown root:root ${systemd_dir}/neko.service
     #chmod 0644 ${systemd_dir}/neko.service
-	chmod 0775 ${neko_dir}/core/*
+	chmod 0775 ${neko_dir}/core/*rule_provider
+ 	systemctl daemon-reload
+  	systemctl enable neko.service
+   	systemctl start neko.service
 }
 
 install() {
