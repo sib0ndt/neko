@@ -14,16 +14,29 @@ die() {
     exit 1
 }
 
-check_depedencies() {
+check_dependencies() {
     php_bin=`command -v php`
     log "Checking PHP Binary..."
+    
     if [[ -n ${php_bin} ]]; then
         log "- Detected : ${php_bin}"
         log "- Skipping..."
     else
-        log "- Installing PHP"
-        apt -y install php php-cli
-        log "Done..."
+        if [[ -f /etc/alpine-release ]]; then
+            log "- Installing PHP on Alpine"
+            apk add --no-cache php php-cli
+            log "Done..."
+        elif [[ -f /etc/arch-release ]]; then
+            log "- Installing PHP on Arch"
+            pacman -Sy --noconfirm php php-cli
+            log "Done..."
+        elif [[ -f /etc/debian_version ]]; then
+            log "- Installing PHP on Debian"
+            apt -y install php php-cli
+            log "Done..."
+        else
+            log "- Unsupported OS. Please install PHP manually."
+        fi
     fi
 }
 
