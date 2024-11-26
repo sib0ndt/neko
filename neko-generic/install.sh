@@ -45,6 +45,8 @@ move_files() {
     cp -rf ${current_dir}/config ${neko_dir}
     cp -rf ${current_dir}/proxy_provider ${neko_dir}
     cp -rf ${current_dir}/rule_provider ${neko_dir}
+    cp -rf ${current_dir}/cache.db ${neko_dir}
+    cp -rf ${current_dir}/geoip.metadb ${neko_dir}
     #cp -rf ${current_dir}/neko.service ${systemd_dir}
 }
 
