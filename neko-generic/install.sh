@@ -60,7 +60,7 @@ move_files() {
     cp -rf ${current_dir}/rule_provider ${neko_dir}
     cp -rf ${current_dir}/cache.db ${neko_dir}
     cp -rf ${current_dir}/geoip.metadb ${neko_dir}
-    #cp -rf ${current_dir}/neko.service ${systemd_dir}
+    cp -rf ${current_dir}/neko.service ${systemd_dir}
 }
 
 download_core_files() {
