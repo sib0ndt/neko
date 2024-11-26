@@ -67,35 +67,29 @@ external-ui: ui
 dns:
   enable: true
   ipv6: false
-  enhanced-mode: redir-host
-  listen: 127.0.0.1:5053
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  listen: 0.0.0.0:7874
   nameserver:
-  - 1.1.1.1
-  - 8.8.4.4
+  - tcp://1.1.1.1#DNS-SETTING
+  - 1.1.1.1#DNS-SETTING
+  - https://dns.cloudflare.com/dns-query#DNS-SETTING&h3=true
+  - tls://one.one.one.one#DNS-SETTING
   fallback:
-  - https://cloudflare-dns.com/dns-query
-  - https://1.1.1.1/dns-query
-  - tls://8.8.8.8:853
-  fallback-filter:
-    geoip: false
-    ipcidr:
-    - 0.0.0.0/8
-    - 10.0.0.0/8
-    - 100.64.0.0/10
-    - 127.0.0.0/8
-    - 169.254.0.0/16
-    - 172.16.0.0/12
-    - 192.0.0.0/24
-    - 192.0.2.0/24
-    - 192.88.99.0/24
-    - 192.168.0.0/16
-    - 198.18.0.0/15
-    - 198.51.100.0/24
-    - 203.0.113.0/24
-    - 224.0.0.0/4
-    - 240.0.0.0/4
-    - 255.255.255.255/32
-ipv6: false
+  - tcp://1.1.1.1#DNS-SETTING
+  - 1.1.1.1#DNS-SETTING
+  - https://dns.cloudflare.com/dns-query#DNS-SETTING&h3=true
+  - tls://one.one.one.one#DNS-SETTING
+  default-nameserver:
+  - 112.215.198.248
+  - 112.215.198.254
+  proxy-server-nameserver:
+  - tcp://1.1.1.1#DNS-SETTING
+  - 1.1.1.1#DNS-SETTING
+  - https://dns.cloudflare.com/dns-query#DNS-SETTING&h3=true
+  - tls://one.one.one.one#DNS-SETTING
+  - 112.215.198.248
+  - 112.215.198.254
 profile:
   store-selected: true
 rules:
